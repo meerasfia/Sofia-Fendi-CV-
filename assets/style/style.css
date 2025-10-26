@@ -1,0 +1,461 @@
+/* /* General */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Georgia", "Garamond";
+  background: #fae6e6;
+  color: #000;
+  scroll-behavior: smooth;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* scolling effect */
+html {
+  scroll-behavior: smooth;
+}
+
+.section {
+  opacity: 0;
+  transform: translateY(80px); /* more distance = longer feel */
+  filter: blur(6px);
+  transition: 
+    opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.section {
+  transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+
+/* navigation bar */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #ff69b4;
+  color: white;
+  padding: 12px 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.navbar .container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.navbar a {
+  display: block;
+  margin : 8px 0 ;
+  font-size: 16px;
+}
+
+.nav-link {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-link  a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav-link a:hover {
+  color: #ffe4f0;
+}
+
+.menu-toggle{
+  display: none;
+  font-size: 28px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* section */
+.section {
+  padding: 120px 50px 80px;
+  text-align: center;
+}
+
+/* profile image */
+.profile {
+  width: 350px;
+  height: 450px;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+/* cv button */
+.cv-btn {
+  background: #9b1d1d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.cv-btn:hover {
+  background: #c23d3d;
+}
+
+/* education cards */
+.edu-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 40px;
+  padding: 20px;
+}
+
+.edu-card {
+  background: #fff;
+  padding: 50px;
+  border-radius: 40px;
+  flex: 0 0 250px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  text-align: center;
+  cursor: pointer;
+}
+
+/* skills */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  list-style: none;
+}
+
+.skill-section {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.skill-section h2 {
+  font-size: 2rem;
+  color: #000000;
+  margin-bottom: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* grid container for skills section */
+.skill-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  justify-items: center;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* button style for skills */
+.skill-btn {
+  background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+  color: #100202;
+  border: none;
+  width: 200px;
+  height: 100px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+  transition: all 0.3s ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* animation */
+.skill-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.4s ease;
+}
+
+.skill-btn:hover::before {
+  left: 100%;
+}
+
+.skill-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.5);
+}
+
+.skill-btn:active {
+  transform: scale(0.95);
+}
+
+/* animation */
+.skill-btn {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.skill-btn:nth-child(1) { animation-delay: 0.1s; }
+.skill-btn:nth-child(2) { animation-delay: 0.2s; }
+.skill-btn:nth-child(3) { animation-delay: 0.3s; }
+.skill-btn:nth-child(4) { animation-delay: 0.4s; }
+.skill-btn:nth-child(5) { animation-delay: 0.5s; }
+.skill-btn:nth-child(6) { animation-delay: 0.6s; }
+.skill-btn:nth-child(7) { animation-delay: 0.7s; }
+.skill-btn:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* projects container */
+.projects-container {
+  display: flex;
+  flex-wrap: nowrap;          /* keep cards in one row */
+  overflow-x: auto;           /* enable horizontal scroll */
+  overflow-y: hidden;
+  gap: 30px;                  /* space between cards */
+  padding: 20px 40px;         /* fix half-cut issue */
+  scroll-behavior: smooth;
+  scroll-padding-left: 40px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.projects-container::-webkit-scrollbar {
+  height: 8px;
+}
+.projects-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 4px;
+}
+
+/* project card */
+.project-card {
+  flex: 0 0 auto;
+  width: 280px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 2px solid #9b1d1d;
+}
+
+.project-card h3 {
+  color: #9b1d1d;
+  margin: 15px 0 10px;
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  color: #333;
+  padding: 0 15px 20px;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(255, 105, 180, 0.3);
+}
+
+/* socials */
+.socials a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #9b1d1d;
+  font-weight: bold;
+}
+
+/* footer */
+footer {
+  background: #c845a8;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* responsive layout */
+@media (max-width: 1000px) {
+  .projects-container {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-card {
+    width: 200px;
+  }
+}
+
+@media (max-width: 900px) {
+  .skill-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .skill-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width : 1000px){
+  .navbar{
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px){
+  .menu-toggle{
+    display: block;
+  }
+
+  .nav-link{
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: rgba(0,0,0,0.9);
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    gap: 15px;
+    padding: 20px 0;
+    border-radius: 0 0 10px 10px;
+    transform: translateY(-200%);
+    opacity: 0;
+    transition: all 0.4s ease;
+  }
+
+  .nav-link.active{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* theme toggle */
+#themeToggle {
+  font-size: 25px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+}
+
+/* dark mode theme */
+.dark-mode {
+  background: #1e1e1e;
+  color: #f2f2f2;
+}
+
+/* dark mode navigation bar */
+.dark-mode nav {
+  background-color: #ff69b4;
+}
+
+/* dark mode edu-card, project-card & skill-btn */
+.dark-mode .edu-card,
+.dark-mode .project-card,
+.dark-mode .skill-btn {
+  background: #2e2e2e;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(255,255,255,0.1);
+}
+
+/* dark mode footer */
+.dark-mode footer {
+  background: #333;
+  color: #ffb6c1;
+}
+
+/* dark mode style fixed */
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+}
+body.dark-mode .skill-section h2,
+body.dark-mode .project-card p,
+body.dark-mode .typing-text{
+    color : #f5f5f5;
+}
+
+
+/* dark mode navigation bar fixed */
+body.dark-mode .navbar {
+  background-color: #333;
+  color: #ffb6c1;
+}
+body.dark-mode .navbar .nav-link a {
+  color: #ffb6c1;
+}
+body.dark-mode .navbar .nav-link a:hover {
+  color: #fff;
+}
+
+/* dark mode card & skills */
+body.dark-mode .edu-card,
+body.dark-mode .project-card,
+body.dark-mode .project-card h3, 
+body.dark-mode .skill-btn {
+  background: #2e2e2e;
+  color: #ffb6c1;
+  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.2);
+}
+
+/* footer */
+body.dark-mode footer {
+  background: #111;
+  color: #ffb6c1;
+}
+
+/* button & links  */
+body.dark-mode .cv-btn {
+  background: #ffb6c1;
+  color: #1e1e1e;
+}
+body.dark-mode .cv-btn:hover {
+  background: #ff69b4;
+}
+body.dark-mode .socials a {
+  color: #ffb6c1;
+}
